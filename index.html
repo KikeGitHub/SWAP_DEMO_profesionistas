@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dr. Miguel Loyo - Ginecología y Obstetricia | CDMX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="js/tailwind.config.js"></script>
+<script src="js/site-config.js"></script>
+<script src="js/tracking.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<meta name="description" content="Dr. Miguel Loyo  Ginecólogo y Obstetra de Alta Especialidad en CDMX. Más de 512 opiniones verificadas. Hospital Ángeles, Star Médica e INPER."/>
+<style>
+html{scroll-behavior:smooth}
+
+body{background:linear-gradient(180deg,#e4ecf0 0%,#d8e4ea 100%)}
+.page-surface{
+  max-width:min(1520px,calc(100% - 20px));
+  margin:10px auto;
+  background:#f5f8fa;
+  border:1px solid #ccd8e0;
+  border-radius:34px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(27,94,110,.14);
+}
+
+.bg-surface.rounded-\[24px\],
+.bg-surface.rounded-\[32px\],
+.booking-surface{
+  border:1px solid #d8e4ea;
+  box-shadow:0 10px 28px rgba(27,94,110,.07);
+}
+
+/* Demo booking widget: mobile-first, premium and stable layout */
+.booking-shell{
+  position:relative;
+  min-height:clamp(680px,74vh,920px);
+  border-radius:28px;
+  overflow:hidden;
+  background:linear-gradient(165deg,#ffffff 0%,#edf2f6 100%);
+  border:1px solid #ccd8e0;
+  box-shadow:0 16px 48px rgba(27,94,110,0.13),0 2px 8px rgba(27,94,110,0.06);
+}
+.booking-layout{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+  padding:20px;
+}
+.booking-surface{
+  background:#fff;
+  border:1px solid #d8e4ea;
+  border-radius:20px;
+  box-shadow:0 4px 18px rgba(27,94,110,.06);
+}
+/* Left panel tinted bg */
+article.booking-surface{
+  background:linear-gradient(155deg,#fff 0%,#f5f8fa 100%);
+}
+/* Accent strip */
+.booking-shell::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:4px;
+  background:linear-gradient(90deg,#7c5357 0%,#e8b4b8 55%,#665880 100%);
+  background:linear-gradient(90deg,#1b5e6e 0%,#8ccad6 55%,#2e4a5e 100%);
+  z-index:2;
+}
+/* Day cards */
+.booking-day{
+  border:1.5px solid #ccd8e0;
+  background:#fff;
+  color:#3d4f5a;
+  border-radius:14px;
+  transition:all .22s cubic-bezier(.2,.8,.3,1);
+  position:relative;
+  overflow:hidden;
+}
+.booking-day:hover:not(.is-disabled):not(.is-active){
+  border-color:#1b5e6e;
+  background:#edf2f6;
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(27,94,110,.14);
+}
+.booking-day.is-active,.booking-day.is-active:hover{
+  background:linear-gradient(145deg,#1b5e6e 0%,#2e7a8c 100%);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 8px 22px rgba(27,94,110,.32);
+  transform:translateY(-2px);
+}
+.booking-day.is-disabled{opacity:.42;cursor:not-allowed;background:#f5f3f3}
+.booking-day.is-disabled{opacity:.42;cursor:not-allowed;background:#edf2f6}
+/* Availability pill inside day card */
+.booking-day-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.04em;
+  padding:2px 7px;
+  border-radius:99px;
+  margin-top:6px;
+  background:rgba(27,94,110,.11);
+  color:#1b5e6e;
+  transition:background .2s,color .2s;
+}
+.booking-day.is-active .booking-day-pill{background:rgba(255,255,255,.22);color:#fff;}
+.booking-day.is-disabled .booking-day-pill{background:#d8e4ea;color:#5c7484;}
+/* Slot buttons */
+.booking-slot{
+  border:1.5px solid #adbec8;
+  background:#fff;
+  color:#3d4f5a;
+  border-radius:10px;
+  transition:all .18s cubic-bezier(.2,.8,.3,1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+}
+.booking-slot:hover:not(.is-active){
+  border-color:#1b5e6e;
+  background:#edf2f6;
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(27,94,110,.12);
+}
+.booking-slot.is-active,.booking-slot.is-active:hover{
+  background:linear-gradient(135deg,#1b5e6e 0%,#2e7a8c 100%);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 6px 16px rgba(27,94,110,.28);
+  transform:translateY(-1px);
+}
+/* Loader */
+.booking-loader{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(237,242,246,.97));
+  transition:opacity .3s ease,visibility .3s ease;
+}
+.booking-shell.is-loaded .booking-loader,
+.booking-shell.has-timeout .booking-loader{
+  opacity:0;
+  visibility:hidden;
+}
+.booking-spinner{
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  border:2.5px solid rgba(27,94,110,.15);
+  border-top-color:#1b5e6e;
+  border-right-color:#8ccad6;
+  animation:bookingSpin .7s linear infinite;
+}
+@keyframes bookingSpin{to{transform:rotate(360deg)}}
+
+@media (min-width:960px){
+  .booking-layout{grid-template-columns:1.2fr .8fr;padding:26px}
+}
+
+@media (max-width:640px){
+  .page-surface{
+    max-width:calc(100% - 10px);
+    margin:5px auto;
+    border-radius:18px;
+  }
+  .booking-shell{min-height:760px}
+  .booking-layout{padding:14px}
+}
+
+/* Gallery */
+.gallery-img{object-fit:cover;border-radius:20px;transition:transform .4s cubic-bezier(.2,.8,.3,1),box-shadow .4s ease;}
+.gallery-img:hover{transform:scale(1.03);box-shadow:0 20px 50px rgba(27,94,110,.22);}
+.gallery-wrap{overflow:hidden;border-radius:20px;}
+
+/* FAQ accordion */
+details summary{cursor:pointer;list-style:none;}
+details summary::-webkit-details-marker{display:none;}
+details[open] .faq-arrow{transform:rotate(180deg);}
+.faq-arrow{transition:transform .25s ease;}
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased pt-20">
+<div class="page-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-grid-margin py-4">
+<a class="font-headline-md text-headline-md text-primary tracking-tight hover:opacity-80 transition-opacity" href="#">
+  Dr. Miguel Loyo
+</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-caps text-label-caps text-tertiary hover:text-primary transition-colors" href="#sobre-mi">Sobre Mí</a>
+<a class="font-label-caps text-label-caps text-tertiary hover:text-primary transition-colors" href="#servicios">Servicios</a>
+<a class="font-label-caps text-label-caps text-tertiary hover:text-primary transition-colors" href="#galeria">Galería</a>
+<a class="font-label-caps text-label-caps text-tertiary hover:text-primary transition-colors" href="#testimonios">Testimonios</a>
+<a class="font-label-caps text-label-caps text-tertiary hover:text-primary transition-colors" href="#faq">FAQ</a>
+<a class="font-label-caps text-label-caps text-tertiary hover:text-primary transition-colors" href="#reserva-google-inline">Agenda</a>
+<a class="font-label-caps text-label-caps text-tertiary hover:text-primary transition-colors" href="#ubicacion">Ubicación</a>
+</div>
+<button data-open-agenda class="hidden md:inline-flex bg-primary text-on-primary px-6 py-2 rounded-lg font-label-caps text-label-caps hover:scale-[1.02] transition-transform shadow-[0_4px_20px_rgba(27,94,110,0.20)]">
+  Agendar Cita
+</button>
+<button id="mobile-menu-btn" class="md:hidden text-primary p-2 rounded-lg hover:bg-surface-container transition-colors" aria-label="Abrir menú" aria-expanded="false">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden fixed top-[73px] left-0 right-0 z-40 bg-surface/97 backdrop-blur-md shadow-lg border-t border-surface-variant md:hidden">
+  <div class="flex flex-col px-grid-margin py-4 gap-0.5">
+    <a class="font-label-caps text-label-caps text-tertiary hover:text-primary hover:bg-surface-container-low transition-all px-4 py-3 rounded-lg" href="#sobre-mi">Sobre Mí</a>
+    <a class="font-label-caps text-label-caps text-tertiary hover:text-primary hover:bg-surface-container-low transition-all px-4 py-3 rounded-lg" href="#servicios">Servicios</a>
+    <a class="font-label-caps text-label-caps text-tertiary hover:text-primary hover:bg-surface-container-low transition-all px-4 py-3 rounded-lg" href="#galeria">Galería</a>
+    <a class="font-label-caps text-label-caps text-tertiary hover:text-primary hover:bg-surface-container-low transition-all px-4 py-3 rounded-lg" href="#testimonios">Testimonios</a>
+    <a class="font-label-caps text-label-caps text-tertiary hover:text-primary hover:bg-surface-container-low transition-all px-4 py-3 rounded-lg" href="#faq">FAQ</a>
+    <a class="font-label-caps text-label-caps text-tertiary hover:text-primary hover:bg-surface-container-low transition-all px-4 py-3 rounded-lg" href="#reserva-google-inline">Agenda</a>
+    <a class="font-label-caps text-label-caps text-tertiary hover:text-primary hover:bg-surface-container-low transition-all px-4 py-3 rounded-lg" href="#ubicacion">Ubicación</a>
+    <div class="pt-3 mt-2 border-t border-surface-variant">
+      <button data-open-agenda class="w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity">
+        Agendar Cita
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-grid-margin py-12 md:py-24 flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/2 space-y-6">
+  <span class="inline-flex items-center gap-2 bg-primary-fixed text-on-primary-container px-4 py-1.5 rounded-full font-label-caps text-label-caps uppercase tracking-widest">
+    <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1; font-size:14px">verified</span>
+    Ginecólogo Certificado · CDMX
+  </span>
+  <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary">
+    Atención integral para la salud de la mujer
+  </h1>
+  <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+    Ginecología y obstetricia con un enfoque humanista, ético y de alta especialidad. Con formación en el INPER, Hospital Ángeles y maestría en España. Tu bienestar es mi prioridad.
+  </p>
+  <div class="flex flex-wrap gap-4 pt-4">
+    <button data-open-agenda class="bg-primary text-on-primary px-8 py-3 rounded-lg font-body-md text-body-md font-semibold hover:scale-[1.02] transition-transform shadow-[0_4px_20px_rgba(27,94,110,0.25)]">
+      Agendar cita
+    </button>
+    <a data-wa-link data-wa-context="hero" data-track-event="wa_click" data-track-source="hero"
+       class="border border-primary text-primary px-8 py-3 rounded-lg font-body-md text-body-md font-semibold hover:bg-surface-container-low transition-colors flex items-center gap-2"
+       href="https://wa.me/5215500000000" target="_blank" rel="noopener noreferrer">
+      <span class="material-symbols-outlined">chat</span>
+      Enviar WhatsApp
+    </a>
+  </div>
+  <div class="flex items-center gap-6 pt-6 border-t border-surface-variant">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">star</span>
+      <span class="font-body-sm text-body-sm text-on-surface-variant">+512 opiniones verificadas</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-primary">video_camera_front</span>
+      <span class="font-body-sm text-body-sm text-on-surface-variant">Presencial y Videoconsulta</span>
+    </div>
+  </div>
+  <div class="flex items-start gap-3 bg-primary-fixed rounded-xl px-4 py-3 border border-primary-fixed-dim">
+    <span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-size:18px">info</span>
+    <p class="font-body-sm text-body-sm text-on-primary-container">
+      <strong>Solo pacientes privados.</strong> No se aceptan aseguradoras. Pago directo al reservar.
+    </p>
+  </div>
+</div>
+<div class="md:w-1/2 w-full relative">
+  <div class="absolute inset-0 bg-primary/10 rounded-[40px] transform translate-x-4 translate-y-4"></div>
+  <img alt="Dr. Miguel Loyo  Ginecólogo y Obstetra"
+       class="w-full h-[520px] object-cover object-top rounded-[40px] relative z-10 shadow-[0_8px_40px_rgba(27,94,110,0.15)]"
+       src="https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/doctor/730fe2/730fe241f34cbfa1acd2c8356367cffe_large.jpg"/>
+</div>
+</section>
+
+<!-- Trust Bar -->
+<!-- Trust Bar -->
+<div class="bg-primary">
+  <div class="max-w-7xl mx-auto px-grid-margin py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div>
+      <p class="font-headline-sm text-headline-sm text-white">+20</p>
+      <p class="font-body-sm text-body-sm text-primary-fixed mt-1">años de experiencia</p>
+    </div>
+    <div>
+      <p class="font-headline-sm text-headline-sm text-white">512</p>
+      <p class="font-body-sm text-body-sm text-primary-fixed mt-1">opiniones en Doctoralia</p>
+    </div>
+    <div>
+      <p class="font-headline-sm text-headline-sm text-white">5.0</p>
+      <p class="font-body-sm text-body-sm text-primary-fixed mt-1">calificación promedio</p>
+    </div>
+    <div>
+      <p class="font-headline-sm text-headline-sm text-white">3+</p>
+      <p class="font-body-sm text-body-sm text-primary-fixed mt-1">hospitales de alta especialidad</p>
+    </div>
+  </div>
+</div>
+
+<!-- Sobre Mí -->
+<section class="max-w-7xl mx-auto px-grid-margin py-16 md:py-20" id="sobre-mi">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+<!-- Left Column: Image + Quote -->
+<div class="lg:col-span-5 w-full max-w-[520px] mx-auto lg:mx-0 space-y-5">
+<div class="relative">
+<div class="absolute inset-0 bg-primary/10 rounded-[36px] transform -translate-x-3 translate-y-3"></div>
+<img alt="Dr. Miguel Loyo  Procedimiento quirúrgico ginecológico"
+     class="w-full h-auto object-cover rounded-[36px] relative z-10 shadow-[0_8px_40px_rgba(27,94,110,0.12)]"
+     src="https://s3.us-east-1.amazonaws.com/doctoralia.com.mx/file/74756d/74756df16c3edf1a92822435cd712d26.jpg"/>
+</div>
+<div class="bg-primary-fixed rounded-[20px] p-5 md:p-6 border-l-4 border-primary">
+  <p class="font-body-md text-body-md text-on-primary-container italic leading-relaxed">"¡Siempre será un gusto poder atenderte y guiarte para tener una excelente salud!"</p>
+  <p class="mt-2 font-label-caps text-label-caps text-primary uppercase tracking-widest">Dr. Miguel Loyo</p>
+</div>
+</div>
+<!-- Right Column: Content -->
+<div class="lg:col-span-7 space-y-6">
+<div class="space-y-2">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Conoce al especialista</span>
+<h2 class="font-headline-md text-headline-md text-primary">Dr. Miguel Loyo</h2>
+<h3 class="font-headline-sm text-headline-sm text-secondary">Ginecólogo y Obstetra · Alta Especialidad</h3>
+</div>
+<!-- Mission / Vision -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="bg-surface rounded-[20px] p-5 shadow-[0_4px_20px_rgba(27,94,110,0.06)] border border-surface-variant">
+    <div class="flex items-center gap-2 mb-3"><span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1; font-size:20px">favorite</span><p class="font-label-caps text-label-caps text-primary uppercase tracking-widest font-bold">Misión</p></div>
+    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Ofrecer atención integral de la más alta calidad en ginecología y obstetricia, respetando en todo momento el valor humano de cada paciente.</p>
+  </div>
+  <div class="bg-surface rounded-[20px] p-5 shadow-[0_4px_20px_rgba(27,94,110,0.06)] border border-surface-variant">
+    <div class="flex items-center gap-2 mb-3"><span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1; font-size:20px">visibility</span><p class="font-label-caps text-label-caps text-secondary uppercase tracking-widest font-bold">Visión</p></div>
+    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Ser el equipo de ginecólogos con el trato más humano y profesional, propiciando la prevención y el tratamiento oportuno.</p>
+  </div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-prose">La consulta médica es el pilar de la relación médico-paciente. Mi objetivo es solucionar, aclarar y explicar las causas de tu condición de forma sencilla para que al salir comprendas tu diagnóstico y tratamiento. En la consulta puedes hacer cualquier pregunta y tomarte el tiempo necesario.</p>
+<div class="flex items-start gap-3 bg-surface-container-low rounded-xl px-4 py-3 border border-surface-variant">
+  <span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-size:18px">event_note</span>
+  <p class="font-body-sm text-body-sm text-on-surface-variant"><strong class="text-on-surface">IMPORTANTE:</strong> Para solicitar cita, favor de reservar por internet y nos comunicaremos a la brevedad. ¡Gracias!</p>
+</div>
+<!-- Experiencia -->
+<div class="space-y-3">
+  <h4 class="font-label-caps text-label-caps text-primary uppercase tracking-widest font-bold">Experiencia Hospitalaria</h4>
+  <ul class="space-y-3">
+    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1; font-size:20px">local_hospital</span><span class="font-body-md text-body-md text-on-surface-variant">Instituto Nacional de Perinatología (INPER)</span></li>
+    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1; font-size:20px">local_hospital</span><span class="font-body-md text-body-md text-on-surface-variant">Grupo Ángeles  Hospital Ángeles Pedregal · Centro Sur</span></li>
+    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1; font-size:20px">local_hospital</span><span class="font-body-md text-body-md text-on-surface-variant">Hospital Can Misses</span></li>
+    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1; font-size:20px">local_hospital</span><span class="font-body-md text-body-md text-on-surface-variant">Hospital Mount Sinai</span></li>
+    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-variation-settings:'FILL' 1; font-size:20px">local_hospital</span><span class="font-body-md text-body-md text-on-surface-variant">Hospital Star Médica HIP  Col. Nápoles</span></li>
+  </ul>
+</div>
+<!-- Formación -->
+<div class="space-y-3">
+  <h4 class="font-label-caps text-label-caps text-primary uppercase tracking-widest font-bold">Formación Académica</h4>
+  <ul class="space-y-3">
+    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary shrink-0 mt-0.5" style="font-size:20px">school</span><span class="font-body-md text-body-md text-on-surface-variant">Universidad Anáhuac  Facultad de Medicina</span></li>
+    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary shrink-0 mt-0.5" style="font-size:20px">school</span><span class="font-body-md text-body-md text-on-surface-variant">Especialidad en Ginecología y Obstetricia  Instituto Nacional de Perinatología</span></li>
+    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary shrink-0 mt-0.5" style="font-size:20px">school</span><span class="font-body-md text-body-md text-on-surface-variant">Curso de Actualización Médica Continua  Asturias, España</span></li>
+    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary shrink-0 mt-0.5" style="font-size:20px">school</span><span class="font-body-md text-body-md text-on-surface-variant">Maestría en Investigación y Resolución de Casos Clínicos  Universidad de Alcalá, España</span></li>
+  </ul>
+</div>
+</div>
+</div>
+</section><section class="bg-surface-container-low py-section-gap-desktop" id="servicios">
+<div class="max-w-7xl mx-auto px-grid-margin">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Especialidades</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-2 mb-4">Servicios y Procedimientos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Ginecología y obstetricia de alta especialidad. Solo pacientes privados  no se aceptan aseguradoras.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Service Card 1 -->
+<div class="bg-surface p-8 rounded-[24px] shadow-[0_4px_30px_rgba(27,94,110,0.06)] hover:shadow-[0_8px_40px_rgba(27,94,110,0.11)] transition-all h-full flex flex-col">
+  <div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center mb-6">
+    <span class="material-symbols-outlined text-primary">stethoscope</span>
+  </div>
+  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Consulta de primera vez</h3>
+  <p class="font-label-caps text-label-caps text-primary font-bold mb-3">$750 MXN</p>
+  <p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Evaluación ginecológica completa, historia clínica, exploración física y plan de atención personalizado.</p>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-surface p-8 rounded-[24px] shadow-[0_4px_30px_rgba(27,94,110,0.06)] hover:shadow-[0_8px_40px_rgba(27,94,110,0.11)] transition-all h-full flex flex-col">
+  <div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center mb-6">
+    <span class="material-symbols-outlined text-primary">replay</span>
+  </div>
+  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Visita subsecuente</h3>
+  <p class="font-label-caps text-label-caps text-primary font-bold mb-3">$1,200 MXN</p>
+  <p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Seguimiento en Ginecología y Obstetricia: control prenatal, revisiones postoperatorias y manejo de enfermedades crónicas.</p>
+</div>
+<!-- Service Card 3 -->
+<div class="bg-surface p-8 rounded-[24px] shadow-[0_4px_30px_rgba(27,94,110,0.06)] hover:shadow-[0_8px_40px_rgba(27,94,110,0.11)] transition-all h-full flex flex-col">
+  <div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center mb-6">
+    <span class="material-symbols-outlined text-on-secondary-container">healing</span>
+  </div>
+  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Legrado uterino postparto</h3>
+  <p class="font-label-caps text-label-caps text-secondary font-bold mb-3">$750 MXN</p>
+  <p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Procedimiento para el manejo de restos trofoblásticos o complicaciones post parto/post aborto bajo anestesia local o sedación.</p>
+</div>
+<!-- Service Card -->
+<!-- Service Card 4 -->
+<div class="bg-surface p-8 rounded-[24px] shadow-[0_4px_30px_rgba(27,94,110,0.06)] hover:shadow-[0_8px_40px_rgba(27,94,110,0.11)] transition-all h-full flex flex-col">
+  <div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center mb-6">
+    <span class="material-symbols-outlined text-primary">content_cut</span>
+  </div>
+  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Extirpación de pólipos</h3>
+  <p class="font-label-caps text-label-caps text-secondary font-bold mb-3">Consultar precio</p>
+  <p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Remoción de pólipos cervicales, vaginales y vulvares mediante procedimientos ambulatorios de mínima invasión.</p>
+</div>
+<!-- Service Card 5 -->
+<div class="bg-surface p-8 rounded-[24px] shadow-[0_4px_30px_rgba(27,94,110,0.06)] hover:shadow-[0_8px_40px_rgba(27,94,110,0.11)] transition-all h-full flex flex-col">
+  <div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center mb-6">
+    <span class="material-symbols-outlined text-on-secondary-container">medical_services</span>
+  </div>
+  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Histerectomía</h3>
+  <p class="font-label-caps text-label-caps text-secondary font-bold mb-3">Consultar precio</p>
+  <p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Procedimiento quirúrgico de alta especialidad para el tratamiento de miomas, prolapso uterino y otros padecimientos.</p>
+</div>
+<!-- Service Card 6 -->
+<div class="bg-surface p-8 rounded-[24px] shadow-[0_4px_30px_rgba(27,94,110,0.06)] hover:shadow-[0_8px_40px_rgba(27,94,110,0.11)] transition-all h-full flex flex-col">
+  <div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center mb-6">
+    <span class="material-symbols-outlined text-primary">videocam</span>
+  </div>
+  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Consulta en línea</h3>
+  <p class="font-label-caps text-label-caps text-primary font-bold mb-3">Disponible</p>
+  <p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Videoconsulta o consulta en domicilio. Presencial y en línea para tu comodidad, ideal para seguimientos y segunda opinión.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Enfermedades Tratadas -->
+<section class="bg-surface-container-low py-section-gap-desktop" id="enfermedades">
+<div class="max-w-7xl mx-auto px-grid-margin">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Padecimientos frecuentes</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-2 mb-4">Padecimientos que atendemos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Las condiciones más frecuentes que el Dr. Loyo atiende en consulta. Si no encuentras tu caso, escríbenos.</p>
+</div>
+
+<div class="bg-surface rounded-[24px] p-6 md:p-8 shadow-[0_4px_30px_rgba(74,74,74,0.06)]">
+  <p class="font-label-caps text-label-caps text-primary uppercase tracking-widest font-bold mb-4">Alta prioridad</p>
+  <div class="flex flex-wrap gap-3 mb-6">
+    <span class="bg-primary text-on-primary px-4 py-2 rounded-full font-body-sm text-body-sm">Sangrado uterino disfuncional</span>
+    <span class="bg-primary text-on-primary px-4 py-2 rounded-full font-body-sm text-body-sm">Endometriosis</span>
+    <span class="bg-primary text-on-primary px-4 py-2 rounded-full font-body-sm text-body-sm">VPH (Virus del Papiloma Humano)</span>
+    <span class="bg-primary text-on-primary px-4 py-2 rounded-full font-body-sm text-body-sm">Embarazo en la adolescencia</span>
+  </div>
+  <p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest font-bold mb-4">También atendemos</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+    <span class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Síndrome de ovario poliquístico</span>
+    <span class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Miomas uterinos</span>
+    <span class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Miomas uterinos</span>
+    <span class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Sangrado uterino anormal</span>
+    <span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Control prenatal</span>
+    <span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Embarazo de alto riesgo</span>
+    <span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Preeclampsia</span>
+    <span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Diabetes gestacional</span>
+    <span class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-body-sm text-body-sm text-center">VPH y colposcopía</span>
+    <span class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Infecciones vaginales</span>
+    <span class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-body-sm text-body-sm text-center">ETS (clamidia, herpes, etc.)</span>
+    <span class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Quistes ováricos</span>
+    <span class="bg-primary-fixed text-on-primary-fixed px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Infertilidad</span>
+    <span class="bg-primary-fixed text-on-primary-fixed px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Pérdida gestacional recurrente</span>
+    <span class="bg-primary-fixed text-on-primary-fixed px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Menopausia y climaterio</span>
+    <span class="bg-primary-fixed text-on-primary-fixed px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Trastornos hormonales</span>
+    <span class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Dolor pélvico crónico</span>
+    <span class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Patología mamaria benigna</span>
+    <span class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Infección urinaria recurrente</span>
+    <span class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-full font-body-sm text-body-sm text-center">Planificación familiar</span>
+  </div>
+
+  <p class="text-center font-body-sm text-body-sm text-on-surface-variant mt-6">Si no ves tu caso en esta lista, escríbenos por WhatsApp o agenda valoración para orientarte.</p>
+</div>
+</div>
+</section>
+<!-- Galería -->
+<section class="max-w-7xl mx-auto px-grid-margin py-section-gap-desktop" id="galeria">
+  <div class="text-center max-w-2xl mx-auto mb-12">
+    <span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Instalaciones</span>
+    <h2 class="font-headline-md text-headline-md text-primary mt-2 mb-4">Galería</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant">Conoce nuestro consultorio y hospitales donde el Dr. Loyo ejerce.</p>
+  </div>
+  <div class="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
+    <div class="gallery-wrap break-inside-avoid">
+      <img src="https://pixel-p3.s3.us-east-1.amazonaws.com/doctor/photos/42904e8d/42904e8d-c9b3-4801-b442-a031ec59e7b1_large.jpg"
+           alt="Consultorio Dr. Miguel Loyo" class="gallery-img w-full h-auto"/>
+    </div>
+    <div class="gallery-wrap break-inside-avoid">
+      <img src="https://pixel-p3.s3.us-east-1.amazonaws.com/doctor/photos/c5785d54/c5785d54-ad5a-44c6-895c-68a9f07460d4_large.jpg"
+           alt="Área de atención Dr. Loyo" class="gallery-img w-full h-auto"/>
+    </div>
+    <div class="gallery-wrap break-inside-avoid">
+      <img src="https://pixel-p3.s3.us-east-1.amazonaws.com/doctor/photos/ca44d311/ca44d311-966e-483d-915c-230105b61ab5_large.jpg"
+           alt="Instalaciones consulta ginecológica" class="gallery-img w-full h-auto"/>
+    </div>
+    <div class="gallery-wrap break-inside-avoid">
+      <img src="https://pixel-p3.s3.us-east-1.amazonaws.com/doctor/photos/ac3319d4/ac3319d4-3498-46e2-83fa-7be0d7110056_large.jpg"
+           alt="Equipo médico especializado" class="gallery-img w-full h-auto"/>
+    </div>
+    <div class="gallery-wrap break-inside-avoid">
+      <img src="https://pixel-p3.s3.us-east-1.amazonaws.com/doctor/photos/6ee1b63f/6ee1b63f-754f-4a4d-aadc-76583fcd534f_large.jpg"
+           alt="Hospital sede Dr. Miguel Loyo" class="gallery-img w-full h-auto"/>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonios Preview -->
+<section class="max-w-7xl mx-auto px-grid-margin py-section-gap-desktop" id="testimonios">
+<div class="text-center max-w-2xl mx-auto mb-12">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Opiniones verificadas</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-2 mb-4">Lo que dicen sus pacientes</h2>
+<div class="inline-flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1; font-size:20px">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1; font-size:20px">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1; font-size:20px">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1; font-size:20px">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1; font-size:20px">star</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">5.0 · 512 opiniones verificadas en Doctoralia</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+
+  <!-- Card 1 -->
+  <div class="bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center font-headline-sm shrink-0 select-none">C</div>
+      <div><p class="font-body-md text-body-md font-semibold text-on-surface">C.P.</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Ángeles Centro Sur · 11 nov 2025</p>
+        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary bg-primary-fixed px-2 py-0.5 rounded-full"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1; font-size:12px">verified</span>Cita verificada</span>
+      </div>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-1">"Me encantó la atención 10/10. El doctor muy amable y empático. Explica muy detallado todo y se nota que le gusta lo que hace."</p>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-sm shrink-0 select-none">A</div>
+      <div><p class="font-body-md text-body-md font-semibold text-on-surface">Ariana</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Ángeles Pedregal · 9 oct 2025</p>
+        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary bg-primary-fixed px-2 py-0.5 rounded-full"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1; font-size:12px">verified</span>Cita verificada</span>
+      </div>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-1">"¡Excelente doctor! Me hizo sentir muy tranquila durante todo el proceso. Muy profesional y atento. Lo recomiendo ampliamente."</p>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-headline-sm shrink-0 select-none">A</div>
+      <div><p class="font-body-md text-body-md font-semibold text-on-surface">AA</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Ángeles Centro Sur · 17 may 2026</p>
+        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary bg-primary-fixed px-2 py-0.5 rounded-full"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1; font-size:12px">verified</span>Cita verificada</span>
+      </div>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-1">"Tengo desde el 2023 con el doctor Miguel. El mejor ginecólogo que he tenido. Siempre puntual, explica todo y te da confianza."</p>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center font-headline-sm shrink-0 select-none">A</div>
+      <div><p class="font-body-md text-body-md font-semibold text-on-surface">ASH</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Ángeles Pedregal · 16 may 2026</p>
+        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary bg-primary-fixed px-2 py-0.5 rounded-full"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1; font-size:12px">verified</span>Cita verificada</span>
+      </div>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-1">"Como siempre, un profesionista confiable, que explica con detalle y da la orientación adecuada. 100% recomendado."</p>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-sm shrink-0 select-none">S</div>
+      <div><p class="font-body-md text-body-md font-semibold text-on-surface">Solange Rivera</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Star Médica HIP · 8 may 2026</p>
+        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary bg-primary-fixed px-2 py-0.5 rounded-full"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1; font-size:12px">verified</span>Cita verificada</span>
+      </div>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-1">"¡Todo perfecto! Explica muy bien los diagnósticos y el tratamiento. Me fui con mucha tranquilidad. 10/10."</p>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-headline-sm shrink-0 select-none">D</div>
+      <div><p class="font-body-md text-body-md font-semibold text-on-surface">Daniela Hernández</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Ángeles Pedregal · 7 may 2026</p>
+        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary bg-primary-fixed px-2 py-0.5 rounded-full"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1; font-size:12px">verified</span>Cita verificada</span>
+      </div>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-1">"Su trato es maravilloso, muy profesional y humano. Te explica todo a detalle y resuelve tus dudas sin apuros."</p>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center font-headline-sm shrink-0 select-none">A</div>
+      <div><p class="font-body-md text-body-md font-semibold text-on-surface">Andrea</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Ángeles Pedregal · 3 may 2026</p>
+        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary bg-primary-fixed px-2 py-0.5 rounded-full"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1; font-size:12px">verified</span>Cita verificada</span>
+      </div>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-1">"Explica súper bien todo, es muy empático, se nota que realmente le importa el bienestar de sus pacientes. Muy recomendado."</p>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-sm shrink-0 select-none">S</div>
+      <div><p class="font-body-md text-body-md font-semibold text-on-surface">Sofía Calderón</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Consulta en línea · 2 may 2026</p>
+        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary bg-primary-fixed px-2 py-0.5 rounded-full"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1; font-size:12px">verified</span>Cita verificada</span>
+      </div>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-1">"Fue mi primera experiencia con videoconsulta y me sorprendió lo profesional que es. Claro, puntual y muy atento."</p>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-headline-sm shrink-0 select-none">M</div>
+      <div><p class="font-body-md text-body-md font-semibold text-on-surface">MT</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Star Médica HIP · 1 may 2026</p>
+        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary bg-primary-fixed px-2 py-0.5 rounded-full"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1; font-size:12px">verified</span>Cita verificada</span>
+      </div>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-1">"El doc es increíble. Muy completo, comprensivo y organizado. Sientes que realmente está escuchando y le importas."</p>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary text-white flex items-center justify-center font-headline-sm shrink-0 select-none">C</div>
+      <div><p class="font-body-md text-body-md font-semibold text-on-surface">CSP</p>
+        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary bg-primary-fixed px-2 py-0.5 rounded-full"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1; font-size:12px">verified</span>Cita verificada</span>
+      </div>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed flex-1">"Muy buen doctor, me ayudó mucho con mi problema de miomas. Con otros no había encontrado solución. Gracias, doctor."</p>
+  </div>
+
+</div>
+<div class="text-center">
+  <a href="https://www.doctoralia.com.mx/miguel-loyo/ginecologo-obstetra/ciudad-de-mexico" target="_blank" rel="noopener noreferrer"
+     class="inline-flex items-center gap-2 border border-primary text-primary px-8 py-3 rounded-lg font-body-md text-body-md font-semibold hover:bg-surface-container-low transition-colors">
+    Ver todas las 512 opiniones en Doctoralia
+    <span class="material-symbols-outlined" style="font-size:20px">arrow_forward</span>
+  </a>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-surface-container-low py-section-gap-desktop" id="faq">
+  <div class="max-w-3xl mx-auto px-grid-margin">
+    <div class="text-center mb-12">
+      <span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Preguntas frecuentes</span>
+      <h2 class="font-headline-md text-headline-md text-primary mt-2 mb-2">FAQ · Dudas de pacientes</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">229 dudas solucionadas en Doctoralia</p>
+    </div>
+    <div class="space-y-4">
+
+      <!-- Q1 -->
+      <details class="bg-surface rounded-[20px] shadow-[0_4px_20px_rgba(27,94,110,0.06)] border border-surface-variant overflow-hidden group">
+        <summary class="flex items-center justify-between gap-4 px-6 py-5 hover:bg-surface-container-low transition-colors">
+          <span class="font-body-md text-body-md font-semibold text-on-surface">¿Existe riesgo de embarazo tras tomar la pastilla del día siguiente?</span>
+          <span class="material-symbols-outlined text-primary shrink-0 faq-arrow">expand_more</span>
+        </summary>
+        <div class="px-6 pb-5">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">La pastilla de emergencia no es 100% efectiva; su eficacia depende de qué tan pronto se tome tras la relación (dentro de las primeras 72 horas idealmente). Si tu período tarda más de 5 días en llegar, realiza una prueba de embarazo. En caso de duda, consulta a tu ginecólogo para explorar opciones anticonceptivas más confiables.</p>
+        </div>
+      </details>
+
+      <!-- Q2 -->
+      <details class="bg-surface rounded-[20px] shadow-[0_4px_20px_rgba(27,94,110,0.06)] border border-surface-variant overflow-hidden group">
+        <summary class="flex items-center justify-between gap-4 px-6 py-5 hover:bg-surface-container-low transition-colors">
+          <span class="font-body-md text-body-md font-semibold text-on-surface">Me diagnosticaron endocervicitis crónica agudizada severa y VPH. ¿Qué sigue?</span>
+          <span class="material-symbols-outlined text-primary shrink-0 faq-arrow">expand_more</span>
+        </summary>
+        <div class="px-6 pb-5">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Lo primero es tratar la endocervicitis con el antibiótico adecuado según cultivo, y descartar otras ITS de pareja. Respecto al VPH, se requiere colposcopía para estadificar la lesión. Dependiendo del resultado, se decide entre vigilancia o tratamiento (criocirugía, LEEP u otro). El seguimiento periódico es fundamental.</p>
+        </div>
+      </details>
+
+      <!-- Q3 -->
+      <details class="bg-surface rounded-[20px] shadow-[0_4px_20px_rgba(27,94,110,0.06)] border border-surface-variant overflow-hidden group">
+        <summary class="flex items-center justify-between gap-4 px-6 py-5 hover:bg-surface-container-low transition-colors">
+          <span class="font-body-md text-body-md font-semibold text-on-surface">¿Cuándo debería ir al ginecólogo por primera vez?</span>
+          <span class="material-symbols-outlined text-primary shrink-0 faq-arrow">expand_more</span>
+        </summary>
+        <div class="px-6 pb-5">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Se recomienda la primera consulta ginecológica entre los 13 y 15 años, o cuando la joven comience a menstruar. Después, lo ideal es una revisión anual aunque no existan molestias, para detección temprana de alteraciones y orientación sobre planificación familiar, vacuna VPH y más.</p>
+        </div>
+      </details>
+
+      <!-- Q4 -->
+      <details class="bg-surface rounded-[20px] shadow-[0_4px_20px_rgba(27,94,110,0.06)] border border-surface-variant overflow-hidden group">
+        <summary class="flex items-center justify-between gap-4 px-6 py-5 hover:bg-surface-container-low transition-colors">
+          <span class="font-body-md text-body-md font-semibold text-on-surface">¿El Dr. Loyo acepta aseguradoras o seguros de gastos médicos?</span>
+          <span class="material-symbols-outlined text-primary shrink-0 faq-arrow">expand_more</span>
+        </summary>
+        <div class="px-6 pb-5">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">No. El consultorio del Dr. Miguel Loyo atiende exclusivamente a pacientes privados. No se aceptan aseguradoras ni seguros de gastos médicos mayores. El pago se realiza directamente al reservar la cita.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- Contacto y Redes Sociales -->
+<section class="max-w-7xl mx-auto px-grid-margin py-section-gap-desktop" id="contacto">
+  <div class="text-center max-w-2xl mx-auto mb-12">
+    <span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Estamos aquí para ti</span>
+    <h2 class="font-headline-md text-headline-md text-primary mt-2 mb-4">Contáctanos</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant">Elige el canal que más te convenga para comunicarte con Dr. Miguel Loyo.</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+
+    <!-- WhatsApp -->
+    <a data-wa-link data-wa-context="contact_card" data-track-event="wa_click" data-track-source="contact_card" href="https://wa.me/5215500000000" target="_blank" rel="noopener noreferrer"
+       class="group bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-5 hover:shadow-[0_8px_40px_rgba(27,94,110,0.11)] hover:-translate-y-1 transition-all">
+      <div class="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style="background:#dcf8c6">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+      <div class="flex-1">
+        <p class="font-headline-sm text-headline-sm text-on-surface mb-1">WhatsApp</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">+52 55 0000 0000</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Resuelve dudas sobre citas, costos, preparación y seguimiento. ¡Respuesta rápida!</p>
+      </div>
+      <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary group-hover:gap-2 transition-all">
+        Escribir por WhatsApp <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+      </span>
+    </a>
+
+    <!-- Agenda -->
+    <a href="#reserva-google-inline"
+       class="group bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-5 hover:shadow-[0_8px_40px_rgba(27,94,110,0.11)] hover:-translate-y-1 transition-all">
+      <div class="w-14 h-14 rounded-full flex items-center justify-center shrink-0 bg-primary-fixed">
+        <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+        </svg>
+      </div>
+      <div class="flex-1">
+        <p class="font-headline-sm text-headline-sm text-on-surface mb-1">Agenda en línea</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Reserva tu cita de forma inmediata</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Disponibilidad en tiempo real y confirmación automática.</p>
+      </div>
+      <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-primary group-hover:gap-2 transition-all">
+        Agendar cita <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+      </span>
+    </a>
+
+    <!-- Ubicación -->
+    <a href="https://www.google.com/maps/search/?api=1&query=19.396225,-99.1794586" target="_blank" rel="noopener noreferrer"
+       class="group bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-5 hover:shadow-[0_8px_40px_rgba(27,94,110,0.11)] hover:-translate-y-1 transition-all">
+      <div class="w-14 h-14 rounded-full flex items-center justify-center shrink-0 bg-secondary-fixed">
+        <svg class="w-7 h-7 text-secondary" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5z"/>
+        </svg>
+      </div>
+      <div class="flex-1">
+        <p class="font-headline-sm text-headline-sm text-on-surface mb-1">Ubicación</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">Col. Nápoles, CDMX</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Viaducto Río Becerra 97, Ciudad de México 03810</p>
+      </div>
+      <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-secondary group-hover:gap-2 transition-all">
+        Ver en Google Maps <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+      </span>
+    </a>
+
+  </div>
+
+</section>
+
+<!-- Agenda Personalizada (Simulada, profesional y funcional) -->
+<section id="reserva-google-inline" class="max-w-7xl mx-auto px-grid-margin py-section-gap-desktop" aria-labelledby="booking-inline-title">
+  <div class="text-center max-w-3xl mx-auto mb-8">
+    <span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Agenda personalizada</span>
+    <h2 id="booking-inline-title" class="font-headline-md text-headline-md text-primary mt-2 mb-4">Reserva tu cita en una experiencia clara y profesional</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant">Este módulo simula disponibilidad en tiempo real para mostrar el flujo final de agenda: selección de fecha, horario y confirmación de cita.</p>
+  </div>
+
+  <div class="booking-shell" id="demo-booking-shell" aria-live="polite" aria-busy="true">
+    <div class="booking-loader" id="demo-booking-loader">
+      <div class="booking-spinner" aria-hidden="true"></div>
+      <p class="font-body-sm text-body-sm text-on-surface-variant">Inicializando disponibilidad de agenda...</p>
+    </div>
+
+    <div class="booking-layout">
+      <article class="booking-surface p-5 md:p-6 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h3 class="font-headline-sm text-headline-sm text-primary">Selecciona fecha y horario</h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Elige el día y la hora que mejor te funcione.</p>
+          </div>
+          <span class="inline-flex items-center gap-1.5 text-on-surface-variant bg-surface-container px-3 py-1.5 rounded-full font-body-sm text-body-sm border border-outline-variant">
+            <span class="w-2 h-2 rounded-full bg-primary inline-block" style="opacity:.7"></span>
+            Simulación activa
+          </span>
+        </div>
+
+        <div class="flex items-center justify-between gap-3">
+          <button id="demo-week-prev" type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-xl border border-outline-variant bg-surface-container-low text-on-surface-variant hover:border-primary hover:text-primary hover:bg-surface transition-all text-body-sm font-body-sm">
+            <span class="material-symbols-outlined" style="font-size:16px">chevron_left</span>
+            <span class="hidden sm:inline">Anterior</span>
+          </button>
+          <p id="demo-week-label" class="font-body-md text-body-md text-primary font-semibold tracking-tight"></p>
+          <button id="demo-week-next" type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-xl border border-outline-variant bg-surface-container-low text-on-surface-variant hover:border-primary hover:text-primary hover:bg-surface transition-all text-body-sm font-body-sm">
+            <span class="hidden sm:inline">Siguiente</span>
+            <span class="material-symbols-outlined" style="font-size:16px">chevron_right</span>
+          </button>
+        </div>
+
+        <div id="demo-days" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2"></div>
+
+        <div>
+          <p class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-3">Horarios disponibles</p>
+          <div id="demo-slots" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2"></div>
+        </div>
+      </article>
+
+      <aside class="booking-surface p-5 md:p-6 space-y-4">
+        <div>
+          <h3 class="font-headline-sm text-headline-sm text-primary">Confirmar cita</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Llena tus datos para completar la reserva.</p>
+        </div>
+        <div id="demo-selected-summary" class="rounded-xl px-4 py-3 font-body-sm text-body-sm" style="background:#edf2f6;border:1.5px dashed #8ccad6;">
+        </div>
+
+        <form id="demo-booking-form" class="space-y-3" novalidate>
+          <div>
+            <label for="demo-name" class="block font-body-sm text-body-sm text-on-surface-variant mb-1">Nombre completo</label>
+            <input id="demo-name" name="name" required type="text" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Ej. María González" />
+          </div>
+          <div>
+            <label for="demo-phone" class="block font-body-sm text-body-sm text-on-surface-variant mb-1">Teléfono</label>
+            <input id="demo-phone" name="phone" required type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" placeholder="5512345678" />
+          </div>
+          <div>
+            <label for="demo-service" class="block font-body-sm text-body-sm text-on-surface-variant mb-1">Tipo de consulta</label>
+            <select id="demo-service" name="service" required class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+              <option value="" selected disabled>Selecciona una opción</option>
+              <option value="Consulta primera vez - $750">Consulta primera vez - $750</option>
+              <option value="Visita subsecuente - $1,200">Visita subsecuente - $1,200</option>
+              <option value="Legrado uterino postparto - $750">Legrado uterino postparto - $750</option>
+              <option value="Extirpación de pólipos - Consultar precio">Extirpación de pólipos - Consultar precio</option>
+              <option value="Histerectomía - Consultar precio">Histerectomía - Consultar precio</option>
+              <option value="Consulta en línea - Disponible">Consulta en línea - Disponible</option>
+            </select>
+          </div>
+          <button id="demo-booking-submit" type="submit" class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl font-body-md text-body-md font-semibold hover:scale-[1.02] active:scale-[.98] transition-transform" style="background:linear-gradient(135deg,#1b5e6e 0%,#2e7a8c 100%);color:#fff;box-shadow:0 6px 20px rgba(27,94,110,.30);">
+            <span class="material-symbols-outlined" style="font-size:18px">event_available</span>
+            Reservar cita
+          </button>
+        </form>
+
+        <p id="demo-feedback" class="hidden rounded-lg px-3 py-2 font-body-sm text-body-sm"></p>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Ubicación -->
+<section class="bg-surface-container-low py-section-gap-desktop" id="ubicacion">
+  <div class="max-w-7xl mx-auto px-grid-margin">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Dónde atendemos</span>
+      <h2 class="font-headline-md text-headline-md text-primary mt-2 mb-4">Ubicación y Hospitales</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">Consultorio principal: Viaducto Río Becerra, Colonia Nápoles, CDMX.</p>
+    </div>
+    <div class="flex flex-col lg:flex-row gap-8 items-stretch">
+      <!-- Info Panel -->
+      <div class="lg:w-1/3 bg-surface rounded-[24px] p-8 shadow-[0_4px_30px_rgba(27,94,110,0.06)] flex flex-col gap-6">
+        <div>
+          <h3 class="font-headline-sm text-headline-sm text-primary mb-4">Información de contacto</h3>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 bg-primary-fixed rounded-full flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-primary" style="font-size:20px; font-variation-settings:'FILL' 1">location_on</span>
+          </div>
+          <div>
+            <p class="font-body-md text-body-md font-semibold text-on-surface">Consultorio Principal</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Viaducto Río Becerra 97<br/>Colonia Nápoles, Benito Juárez<br/>Ciudad de México 03810, CDMX</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 bg-primary-fixed rounded-full flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-primary" style="font-size:20px">schedule</span>
+          </div>
+          <div>
+            <p class="font-body-md text-body-md font-semibold text-on-surface">Horario</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Lunes  Viernes<br/>8:00  18:00 hrs<br/>Sábado: 8:00  11:00 hrs</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-on-secondary-container" style="font-size:20px; font-variation-settings:'FILL' 1">local_hospital</span>
+          </div>
+          <div>
+            <p class="font-body-md text-body-md font-semibold text-on-surface">Hospitales</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Ángeles Pedregal<br/>Ángeles Centro Sur<br/>Star Médica HIP Nápoles</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 bg-primary-fixed rounded-xl px-4 py-3 border border-primary-fixed-dim">
+          <span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-size:18px">info</span>
+          <p class="font-body-sm text-body-sm text-on-primary-container"><strong>Nota:</strong> Solo pacientes privados. No se aceptan seguros.</p>
+        </div>
+        <div class="mt-auto pt-4">
+          <a href="https://www.google.com/maps/search/?api=1&query=19.396225,-99.1794586"
+             target="_blank" rel="noopener noreferrer"
+             class="flex items-center justify-center gap-2 w-full bg-primary text-on-primary px-6 py-3 rounded-lg font-label-caps text-label-caps hover:scale-[1.02] transition-transform shadow-[0_4px_20px_rgba(27,94,110,0.20)]">
+            <span class="material-symbols-outlined" style="font-size:18px">open_in_new</span>
+            Abrir en Google Maps
+          </a>
+        </div>
+      </div>
+      <!-- Map -->
+      <div class="lg:w-2/3 rounded-[24px] overflow-hidden shadow-[0_4px_30px_rgba(27,94,110,0.08)] min-h-[400px]">
+        <iframe
+          title="Consultorio Dr. Miguel Loyo  Viaducto Río Becerra, Nápoles, CDMX"
+          src="https://maps.google.com/maps?q=19.396225,-99.1794586&z=16&output=embed"
+          width="100%"
+          height="100%"
+          style="min-height:400px; border:0; display:block;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="w-full bg-primary text-on-primary border-t border-primary-fixed-dim">
+  <div class="max-w-7xl mx-auto px-grid-margin py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-primary-fixed-dim">
+
+      <!-- Brand + Social -->
+      <div class="space-y-4">
+        <div class="font-headline-sm text-headline-sm text-white">Dr. Miguel Loyo</div>
+        <p class="font-body-sm text-body-sm text-primary-fixed leading-relaxed">
+          Ginecología y Obstetricia de Alta Especialidad.<br/>Viaducto Río Becerra 97, Col. Nápoles, CDMX.
+        </p>
+        <div class="flex gap-3 pt-2">
+          <a data-wa-link data-wa-context="footer_social" data-track-event="wa_click" data-track-source="footer_social" href="https://wa.me/5215500000000" target="_blank" rel="noopener noreferrer"
+             aria-label="WhatsApp" class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center shadow-sm hover:scale-110 transition-transform">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Nav links -->
+      <div>
+        <p class="font-label-caps text-label-caps text-white uppercase tracking-widest mb-5">Navegación</p>
+        <div class="space-y-2">
+          <a href="#sobre-mi" class="block font-body-sm text-body-sm text-primary-fixed hover:text-white transition-colors py-0.5">Sobre Mí</a>
+          <a href="#servicios" class="block font-body-sm text-body-sm text-primary-fixed hover:text-white transition-colors py-0.5">Servicios</a>
+          <a href="#galeria" class="block font-body-sm text-body-sm text-primary-fixed hover:text-white transition-colors py-0.5">Galería</a>
+          <a href="#testimonios" class="block font-body-sm text-body-sm text-primary-fixed hover:text-white transition-colors py-0.5">Testimonios</a>
+          <a href="#faq" class="block font-body-sm text-body-sm text-primary-fixed hover:text-white transition-colors py-0.5">FAQ</a>
+          <a href="#reserva-google-inline" class="block font-body-sm text-body-sm text-primary-fixed hover:text-white transition-colors py-0.5">Agenda</a>
+          <a href="#ubicacion" class="block font-body-sm text-body-sm text-primary-fixed hover:text-white transition-colors py-0.5">Ubicación</a>
+        </div>
+      </div>
+
+      <!-- Contact info -->
+      <div>
+        <p class="font-label-caps text-label-caps text-white uppercase tracking-widest mb-5">Contacto</p>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-primary-fixed shrink-0" style="font-size:18px">location_on</span>
+            <span class="font-body-sm text-body-sm text-primary-fixed">Viaducto Río Becerra 97, Col. Nápoles, CDMX</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-primary-fixed shrink-0" style="font-size:18px">phone</span>
+            <a data-wa-link data-wa-context="footer_phone" data-track-event="wa_click" data-track-source="footer_phone" href="https://wa.me/5215500000000" class="font-body-sm text-body-sm text-primary-fixed hover:text-white transition-colors">+52 55 0000 0000</a>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-primary-fixed shrink-0" style="font-size:18px">schedule</span>
+            <span class="font-body-sm text-body-sm text-primary-fixed">Lun-Vie: 8:00-18:00 hrs | Sab: 8:00-11:00 hrs</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar + No Insurance Notice -->
+    <div class="space-y-4 pt-8">
+      <div class="flex items-start gap-3 bg-primary-fixed-dim rounded-lg px-4 py-3 border border-primary-fixed">
+        <span class="material-symbols-outlined text-primary-fixed shrink-0 mt-0.5" style="font-size:18px">info</span>
+        <p class="font-body-sm text-body-sm text-white"><strong>Nota importante:</strong> El consultorio atiende solo pacientes privados. No se aceptan aseguradoras ni seguros de gastos médicos mayores.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="font-body-sm text-body-sm text-primary-fixed text-center sm:text-left">
+          © 2026 Dr. Miguel Loyo - Ginecología y Obstetricia. Todos los derechos reservados.
+        </p>
+        <div class="flex gap-6">
+          <a class="font-body-sm text-body-sm text-primary-fixed hover:text-white transition-colors" href="#">Aviso de Privacidad</a>
+          <a class="font-body-sm text-body-sm text-primary-fixed hover:text-white transition-colors" href="#">Términos de Servicio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Floating WhatsApp Button -->
+<a data-wa-link data-wa-context="floating" data-track-event="wa_click" data-track-source="floating" class="fixed bottom-6 right-6 bg-white text-primary p-4 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.3)] hover:scale-110 transition-transform z-50 flex items-center justify-center" href="https://wa.me/5215500000000" target="_blank" rel="noopener noreferrer" aria-label="Enviar WhatsApp">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; color:#25d366;">chat</span>
+</a>
+
+<!-- 
+     MODAL AGENDAR CITA
+ -->
+<div id="agenda-modal" class="hidden fixed inset-0 z-[200] flex items-end sm:items-center justify-center p-0 sm:p-4" role="dialog" aria-modal="true" aria-labelledby="agenda-title">
+  <!-- Backdrop -->
+  <div id="agenda-backdrop" class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm"></div>
+
+  <!-- Panel -->
+  <div class="relative w-full sm:max-w-lg bg-surface rounded-t-[32px] sm:rounded-[32px] shadow-[0_24px_80px_rgba(74,74,74,0.18)] flex flex-col max-h-[92dvh] overflow-hidden">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 pt-6 pb-4 border-b border-surface-variant shrink-0">
+      <div>
+        <h2 id="agenda-title" class="font-headline-sm text-headline-sm text-primary">Agendar cita</h2>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Dr. Miguel Loyo - Ginecología y Obstetricia</p>
+      </div>
+      <button id="agenda-close" type="button" aria-label="Cerrar"
+              class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface-variant">
+        <span class="material-symbols-outlined" style="font-size:22px">close</span>
+      </button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex border-b border-surface-variant shrink-0 px-6">
+      <button id="tab-presencial" type="button"
+              class="flex items-center gap-2 py-3 pr-6 font-label-caps text-label-caps border-b-2 border-primary text-primary transition-colors">
+        <span class="material-symbols-outlined" style="font-size:16px">apartment</span>
+        Visita presencial
+      </button>
+      <button id="tab-video" type="button"
+              class="flex items-center gap-2 py-3 pl-6 font-label-caps text-label-caps text-on-surface-variant transition-colors">
+        <span class="material-symbols-outlined" style="font-size:16px">videocam</span>
+        Consulta en línea
+      </button>
+    </div>
+
+    <!-- Scrollable body -->
+    <div class="overflow-y-auto flex-1 px-6 py-6 space-y-6">
+
+      <!-- Address chip -->
+      <div class="flex items-center gap-2 bg-surface-container-low rounded-xl px-4 py-3">
+        <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1; font-size:18px">location_on</span>
+        <span id="agenda-address" class="font-body-sm text-body-sm text-on-surface-variant">Viaducto Río Becerra 97, Col. Nápoles - CDMX</span>
+      </div>
+
+      <!--  Datos del paciente  -->
+      <fieldset class="space-y-4">
+        <legend class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-3">Tus datos</legend>
+
+        <div>
+          <label for="ag-nombre" class="block font-body-sm text-body-sm text-on-surface-variant mb-1">Nombre completo <span class="text-error">*</span></label>
+          <input id="ag-nombre" type="text" placeholder="Ej. María González" autocomplete="name" required
+                 class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface transition-colors placeholder:text-outline"/>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="ag-telefono" class="block font-body-sm text-body-sm text-on-surface-variant mb-1">Teléfono <span class="text-error">*</span></label>
+                 <input id="ag-telefono" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="5512345678" autocomplete="tel" required
+                   class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface transition-colors placeholder:text-outline"/>
+          </div>
+          <div>
+            <label for="ag-email" class="block font-body-sm text-body-sm text-on-surface-variant mb-1">Correo electrónico</label>
+            <input id="ag-email" type="email" placeholder="correo@ejemplo.com" autocomplete="email"
+                   class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface transition-colors placeholder:text-outline"/>
+          </div>
+        </div>
+      </fieldset>
+
+      <!--  Tipo de consulta  -->
+      <fieldset class="space-y-4">
+        <legend class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-3">Detalle de la cita</legend>
+
+        <div>
+          <label for="ag-servicio" class="block font-body-sm text-body-sm text-on-surface-variant mb-1">Tipo de consulta <span class="text-error">*</span></label>
+          <select id="ag-servicio" required
+                  class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface transition-colors">
+                        <option value="" disabled selected>Selecciona una opción</option>
+            <option>Consulta primera vez - $750</option>
+            <option>Visita subsecuente - $1,200</option>
+            <option>Legrado uterino postparto - $750</option>
+            <option>Extirpación de pólipos - Consultar precio</option>
+            <option>Histerectomía - Consultar precio</option>
+            <option>Consulta en línea - Disponible</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-body-sm text-body-sm text-on-surface-variant mb-2">¿Es tu primera visita con el Dr.?</label>
+          <div class="flex gap-6">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="ag-primera" value="Sí" class="accent-primary w-4 h-4" checked/>
+              <span class="font-body-md text-body-md text-on-surface">Sí</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="ag-primera" value="No" class="accent-primary w-4 h-4"/>
+              <span class="font-body-md text-body-md text-on-surface">No</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label for="ag-motivo" class="block font-body-sm text-body-sm text-on-surface-variant mb-1">Motivo de consulta <span class="text-outline">(opcional)</span></label>
+          <textarea id="ag-motivo" rows="2" placeholder="Describe brevemente el motivo de tu consulta..."
+                    class="w-full px-4 py-2.5 rounded-lg border border-outline-variant bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface transition-colors placeholder:text-outline resize-none"></textarea>
+        </div>
+      </fieldset>
+
+      <!--  Calendario  -->
+      <fieldset>
+        <legend class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-4">Selecciona día y horario</legend>
+
+        <!-- Days row -->
+        <div id="agenda-days" class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide"></div>
+
+        <!-- Time slots -->
+        <div id="agenda-slots" class="mt-4"></div>
+      </fieldset>
+
+      <!-- Error message -->
+      <p id="agenda-error" class="hidden bg-error-container text-on-error-container rounded-lg px-4 py-3 font-body-sm text-body-sm"></p>
+
+    </div><!-- /scrollable -->
+
+    <!-- Footer CTA -->
+    <div class="shrink-0 px-6 pb-6 pt-4 border-t border-surface-variant space-y-3">
+      <button id="agenda-confirm" type="button"
+              class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-secondary text-white py-3.5 rounded-xl font-body-md text-body-md font-semibold hover:scale-[1.01] active:scale-[0.99] transition-transform shadow-[0_4px_20px_rgba(27,94,110,0.20)]">
+        <span class="material-symbols-outlined" style="font-size:20px">send</span>
+        Confirmar por WhatsApp
+      </button>
+      <p class="text-center font-body-sm text-body-sm text-on-surface-variant">
+        O escríbenos directamente a
+        <a data-wa-link data-wa-context="modal_footer" data-track-event="wa_click" data-track-source="modal_footer" href="https://wa.me/5215500000000" target="_blank" rel="noopener noreferrer"
+           class="text-primary underline underline-offset-2">WhatsApp</a>
+      </p>
+    </div>
+
+  </div><!-- /panel -->
+</div><!-- /modal -->
+
+</div>
+
+<script src="js/agenda.js" defer></script>
+<script src="js/api-client.js" defer></script>
+<script src="js/booking-demo.js" defer></script>
+</body></html>
+
+
+
+
+
+
