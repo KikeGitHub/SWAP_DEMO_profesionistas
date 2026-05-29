@@ -203,7 +203,7 @@
         // address line
         document.getElementById("agenda-address").textContent =
             tab === "presencial"
-                ? "Viaducto Río Becerra 97, Col. Nápoles - CDMX"
+                ? "Hospital Ángeles Pedregal · CLINIFEM Centro CDMX"
                 : "Consulta en línea por videollamada";
 
         renderDays();
@@ -325,7 +325,7 @@
             : "pendiente de confirmar";
 
         return (
-            "Hola Dr. Miguel Loyo, me gustaría agendar una cita.\n\n" +
+            "Hola Dra. Annette Valerie Gaspard, me gustaría agendar una cita.\n\n" +
             "👤 Nombre: " + nombre + "\n" +
             "📞 Teléfono: " + telefono + "\n" +
             (email ? "📧 Email: " + email + "\n" : "") +

@@ -1,10 +1,10 @@
 (function () {
     var appConfig = {
         clinic: {
-            name: "Dr. Miguel Loyo",
-            specialty: "Ginecología y Obstetricia",
+            name: "Dra. Annette Valerie Gaspard",
+            specialty: "Ginecología, Obstetricia y Medicina Materno Fetal",
             city: "CDMX",
-            address: "Viaducto Río Becerra 97, Colonia Nápoles, Ciudad de México 03810"
+            address: "CLINIFEM Centro CDMX, Hospital Ángeles Pedregal, Camino Santa Teresa 1055-S, Piso 7, Consultorio 733, Héroes de Padierna, Ciudad de México 10700"
         },
         contacts: {
             // TODO: Replace with Dr. Loyo's actual WhatsApp number
