@@ -1,13 +1,13 @@
 (function () {
     var appConfig = {
         clinic: {
-            name: "Dra. Annette Valerie Gaspard",
-            specialty: "Ginecología, Obstetricia y Medicina Materno Fetal",
-            city: "CDMX",
-            address: "CLINIFEM Centro CDMX, Hospital Ángeles Pedregal, Camino Santa Teresa 1055-S, Piso 7, Consultorio 733, Héroes de Padierna, Ciudad de México 10700"
+            name: "Dra. Luz Elizabeth Turrubiate Munguia",
+            specialty: "Ginecologia y Obstetricia",
+            city: "Ciudad de Mexico",
+            address: "Hospital San Angel Inn Universidad Torre II, Real Mayorazgo 130, Consultorio 342, Piso 3, Torre II, Ciudad de Mexico 03330"
         },
         contacts: {
-            // TODO: Replace with Dr. Loyo's actual WhatsApp number
+            // TODO: Replace with Dra. Luz's actual WhatsApp number
             whatsappE164: "5215500000000",
             whatsappDisplay: "+52 55 0000 0000"
         },
@@ -18,7 +18,7 @@
         },
         api: {
             baseUrl: "http://localhost:8080",
-            clientId: "dr-miguel-loyo",
+            clientId: "dra-luz-turrubiate",
             timeoutMs: 12000
         },
         tracking: {

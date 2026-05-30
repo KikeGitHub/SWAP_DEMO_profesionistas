@@ -3,7 +3,7 @@ tailwind.config = {
     theme: {
         extend: {
             colors: {
-                /* ── Dra. Annette Valerie Gaspard – Rose Medical Professional ── */
+                /* ── Dra. Luz Elizabeth Turrubiate Munguia – Rose Medical Professional ── */
                 "primary":                    "#8b4d67",
                 "on-primary":                 "#ffffff",
                 "primary-container":          "#f3cfdc",
