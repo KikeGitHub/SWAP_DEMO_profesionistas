@@ -4,7 +4,7 @@
         var api = app.api || {};
         return {
             baseUrl: (api.baseUrl || "http://localhost:8080").replace(/\/$/, ""),
-            clientId: api.clientId || "dra-yadira",
+            clientId: api.clientId || "dra-luz-turrubiate",
             timeoutMs: typeof api.timeoutMs === "number" ? api.timeoutMs : 12000
         };
     }

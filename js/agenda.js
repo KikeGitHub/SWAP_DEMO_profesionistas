@@ -109,7 +109,7 @@
         var bookingCfg = cfg.booking || {};
         var legacyCfg = window.GoogleBookingConfig || {};
         var bookingUrl = bookingCfg.googleBookingUrl || legacyCfg.bookingUrl || frame.getAttribute("data-booking-url") || "";
-        var fallbackText = "Hola Dr. Loyo, vengo de su web y quiero confirmar mi cita.";
+        var fallbackText = "Hola Dra. Luz Elizabeth Turrubiate Munguia, vengo de su web y quiero confirmar mi cita.";
 
         frame.setAttribute("data-booking-url", bookingUrl);
         fallback.href = waBase() + "?text=" + encodeURIComponent(fallbackText);
@@ -176,7 +176,7 @@
         var number = getWhatsAppNumber();
         document.querySelectorAll("a[data-wa-link]").forEach(function (link) {
             var context = link.getAttribute("data-wa-context") || "web";
-            var message = "Hola Dr. Loyo, vengo de su web y quiero confirmar mi cita. (" + context + ")";
+            var message = "Hola Dra. Luz Elizabeth Turrubiate Munguia, vengo de su web y quiero confirmar mi cita. (" + context + ")";
             link.href = "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
         });
     }
@@ -203,7 +203,7 @@
         // address line
         document.getElementById("agenda-address").textContent =
             tab === "presencial"
-                ? "Viaducto Río Becerra 97, Col. Nápoles - CDMX"
+                ? "Hospital San Angel Inn Universidad Torre II, Real Mayorazgo 130, Consultorio 342, Piso 3"
                 : "Consulta en línea por videollamada";
 
         renderDays();
@@ -325,7 +325,7 @@
             : "pendiente de confirmar";
 
         return (
-            "Hola Dr. Miguel Loyo, me gustaría agendar una cita.\n\n" +
+            "Hola Dra. Luz Elizabeth Turrubiate Munguia, me gustaria agendar una cita.\n\n" +
             "👤 Nombre: " + nombre + "\n" +
             "📞 Teléfono: " + telefono + "\n" +
             (email ? "📧 Email: " + email + "\n" : "") +

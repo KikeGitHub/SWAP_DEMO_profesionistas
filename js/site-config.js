@@ -1,13 +1,13 @@
 (function () {
     var appConfig = {
         clinic: {
-            name: "Dr. Miguel Loyo",
-            specialty: "Ginecología y Obstetricia",
-            city: "CDMX",
-            address: "Viaducto Río Becerra 97, Colonia Nápoles, Ciudad de México 03810"
+            name: "Dra. Luz Elizabeth Turrubiate Munguia",
+            specialty: "Ginecologia y Obstetricia",
+            city: "Ciudad de Mexico",
+            address: "Hospital San Angel Inn Universidad Torre II, Real Mayorazgo 130, Consultorio 342, Piso 3, Torre II, Ciudad de Mexico 03330"
         },
         contacts: {
-            // TODO: Replace with Dr. Loyo's actual WhatsApp number
+            // TODO: Replace with Dra. Luz's actual WhatsApp number
             whatsappE164: "5215500000000",
             whatsappDisplay: "+52 55 0000 0000"
         },
@@ -18,7 +18,7 @@
         },
         api: {
             baseUrl: "http://localhost:8080",
-            clientId: "dr-miguel-loyo",
+            clientId: "dra-luz-turrubiate",
             timeoutMs: 12000
         },
         tracking: {
