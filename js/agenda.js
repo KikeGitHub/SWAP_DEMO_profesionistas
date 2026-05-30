@@ -8,6 +8,11 @@
         return (cfg.contacts && cfg.contacts.whatsappE164) || "5215576645037";
     }
 
+    function getClinicName() {
+        var cfg = getConfig();
+        return (cfg.clinic && cfg.clinic.name) || "Dra. Especialista";
+    }
+
     function waBase() {
         return "https://wa.me/" + getWhatsAppNumber();
     }
@@ -109,7 +114,7 @@
         var bookingCfg = cfg.booking || {};
         var legacyCfg = window.GoogleBookingConfig || {};
         var bookingUrl = bookingCfg.googleBookingUrl || legacyCfg.bookingUrl || frame.getAttribute("data-booking-url") || "";
-        var fallbackText = "Hola Dra. Luz Elizabeth Turrubiate Munguia, vengo de su web y quiero confirmar mi cita.";
+        var fallbackText = "Hola " + getClinicName() + ", vengo de su web y quiero confirmar mi cita.";
 
         frame.setAttribute("data-booking-url", bookingUrl);
         fallback.href = waBase() + "?text=" + encodeURIComponent(fallbackText);
@@ -176,7 +181,7 @@
         var number = getWhatsAppNumber();
         document.querySelectorAll("a[data-wa-link]").forEach(function (link) {
             var context = link.getAttribute("data-wa-context") || "web";
-            var message = "Hola Dra. Luz Elizabeth Turrubiate Munguia, vengo de su web y quiero confirmar mi cita. (" + context + ")";
+            var message = "Hola " + getClinicName() + ", vengo de su web y quiero confirmar mi cita. (" + context + ")";
             link.href = "https://wa.me/" + number + "?text=" + encodeURIComponent(message);
         });
     }
@@ -325,7 +330,7 @@
             : "pendiente de confirmar";
 
         return (
-            "Hola Dra. Luz Elizabeth Turrubiate Munguia, me gustaria agendar una cita.\n\n" +
+            "Hola " + getClinicName() + ", me gustaria agendar una cita.\n\n" +
             "👤 Nombre: " + nombre + "\n" +
             "📞 Teléfono: " + telefono + "\n" +
             (email ? "📧 Email: " + email + "\n" : "") +
