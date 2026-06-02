@@ -57,6 +57,20 @@
         }
     }
 
+    function updateDocumentTitle(cfg) {
+        if (!cfg || !cfg.clinic) return;
+
+        var titleParts = [
+            cfg.clinic.name,
+            cfg.clinic.specialty,
+            cfg.clinic.city
+        ].filter(Boolean);
+
+        if (titleParts.length) {
+            document.title = titleParts[0] + " - " + (titleParts[1] || "") + (titleParts[2] ? " | " + titleParts[2] : "");
+        }
+    }
+
     function applyProfileImages(cfg) {
         var heroImage = document.querySelector('[data-profile-image="hero"]');
         var aboutImage = document.querySelector('[data-profile-image="about"]');
@@ -110,6 +124,7 @@
     };
 
     document.addEventListener("DOMContentLoaded", function () {
+        updateDocumentTitle(appConfig);
         replaceNameInDocument(DEFAULT_CLINIC.name, appConfig.clinic.name);
         applyProfileImages(appConfig);
     });
