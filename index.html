@@ -14,22 +14,25 @@
 <style>
 html{scroll-behavior:smooth}
 
-body{background:linear-gradient(180deg,#fff3f7 0%,#f4e6ee 100%)}
+body{background:
+  radial-gradient(circle at 12% 8%, rgba(31,95,115,.14), transparent 36%),
+  radial-gradient(circle at 88% 0%, rgba(95,111,137,.12), transparent 32%),
+  linear-gradient(180deg,#f4f9fb 0%,#e8f0f4 100%)}
 .page-surface{
   max-width:min(1520px,calc(100% - 20px));
   margin:10px auto;
-  background:#fffafc;
-  border:1px solid #e2d0d8;
+  background:#fdfefe;
+  border:1px solid #d1dde4;
   border-radius:34px;
   overflow:hidden;
-  box-shadow:0 22px 60px rgba(139,77,103,.12);
+  box-shadow:0 22px 60px rgba(31,95,115,.14);
 }
 
 .bg-surface.rounded-\[24px\],
 .bg-surface.rounded-\[32px\],
 .booking-surface{
-  border:1px solid #ecdde4;
-  box-shadow:0 10px 28px rgba(139,77,103,.07);
+  border:1px solid #d7e1e8;
+  box-shadow:0 10px 28px rgba(31,95,115,.08);
 }
 
 /* Demo booking widget: mobile-first, premium and stable layout */
@@ -38,9 +41,9 @@ body{background:linear-gradient(180deg,#fff3f7 0%,#f4e6ee 100%)}
   min-height:clamp(680px,74vh,920px);
   border-radius:28px;
   overflow:hidden;
-  background:linear-gradient(165deg,#ffffff 0%,#f8edf2 100%);
-  border:1px solid #e2d0d8;
-  box-shadow:0 16px 48px rgba(139,77,103,0.13),0 2px 8px rgba(139,77,103,0.06);
+  background:linear-gradient(165deg,#ffffff 0%,#edf4f7 100%);
+  border:1px solid #d1dde4;
+  box-shadow:0 16px 48px rgba(31,95,115,0.14),0 2px 8px rgba(31,95,115,0.08);
 }
 .booking-layout{
   display:grid;
@@ -50,13 +53,13 @@ body{background:linear-gradient(180deg,#fff3f7 0%,#f4e6ee 100%)}
 }
 .booking-surface{
   background:#fff;
-  border:1px solid #ecdde4;
+  border:1px solid #d7e1e8;
   border-radius:20px;
-  box-shadow:0 4px 18px rgba(139,77,103,.06);
+  box-shadow:0 4px 18px rgba(31,95,115,.08);
 }
 /* Left panel tinted bg */
 article.booking-surface{
-  background:linear-gradient(155deg,#fff 0%,#fff5f8 100%);
+  background:linear-gradient(155deg,#fff 0%,#f2f7fa 100%);
 }
 /* Accent strip */
 .booking-shell::before{
@@ -64,34 +67,34 @@ article.booking-surface{
   position:absolute;
   top:0;left:0;right:0;
   height:4px;
-  background:linear-gradient(90deg,#8b4d67 0%,#e4b8c7 55%,#b56a85 100%);
+  background:linear-gradient(90deg,#1f5f73 0%,#6fa2b2 52%,#2f7f95 100%);
   z-index:2;
 }
 /* Day cards */
 .booking-day{
-  border:1.5px solid #e2d0d8;
+  border:1.5px solid #d1dde4;
   background:#fff;
-  color:#64535c;
+  color:#4e6170;
   border-radius:14px;
   transition:all .22s cubic-bezier(.2,.8,.3,1);
   position:relative;
   overflow:hidden;
 }
 .booking-day:hover:not(.is-disabled):not(.is-active){
-  border-color:#8b4d67;
-  background:#f8edf2;
+  border-color:#1f5f73;
+  background:#edf4f7;
   transform:translateY(-2px);
-  box-shadow:0 6px 16px rgba(139,77,103,.14);
+  box-shadow:0 6px 16px rgba(31,95,115,.15);
 }
 .booking-day.is-active,.booking-day.is-active:hover{
-  background:linear-gradient(145deg,#8b4d67 0%,#b56a85 100%);
+  background:linear-gradient(145deg,#1f5f73 0%,#2f7f95 100%);
   color:#fff;
   border-color:transparent;
-  box-shadow:0 8px 22px rgba(139,77,103,.28);
+  box-shadow:0 8px 22px rgba(31,95,115,.26);
   transform:translateY(-2px);
 }
-.booking-day.is-disabled{opacity:.42;cursor:not-allowed;background:#faf3f6}
-.booking-day.is-disabled{opacity:.42;cursor:not-allowed;background:#f8edf2}
+.booking-day.is-disabled{opacity:.42;cursor:not-allowed;background:#f2f7fa}
+.booking-day.is-disabled{opacity:.42;cursor:not-allowed;background:#edf4f7}
 /* Availability pill inside day card */
 .booking-day-pill{
   display:inline-flex;
@@ -103,17 +106,17 @@ article.booking-surface{
   padding:2px 7px;
   border-radius:99px;
   margin-top:6px;
-  background:rgba(139,77,103,.11);
-  color:#8b4d67;
+  background:rgba(31,95,115,.12);
+  color:#1f5f73;
   transition:background .2s,color .2s;
 }
 .booking-day.is-active .booking-day-pill{background:rgba(255,255,255,.22);color:#fff;}
-.booking-day.is-disabled .booking-day-pill{background:#ecdde4;color:#8b7680;}
+.booking-day.is-disabled .booking-day-pill{background:#dde8ed;color:#7a8d9c;}
 /* Slot buttons */
 .booking-slot{
-  border:1.5px solid #d5c0c9;
+  border:1.5px solid #bfd0da;
   background:#fff;
-  color:#64535c;
+  color:#4e6170;
   border-radius:10px;
   transition:all .18s cubic-bezier(.2,.8,.3,1);
   display:flex;
@@ -122,17 +125,31 @@ article.booking-surface{
   gap:5px;
 }
 .booking-slot:hover:not(.is-active){
-  border-color:#8b4d67;
-  background:#f8edf2;
+  border-color:#1f5f73;
+  background:#edf4f7;
   transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(139,77,103,.12);
+  box-shadow:0 4px 12px rgba(31,95,115,.14);
 }
 .booking-slot.is-active,.booking-slot.is-active:hover{
-  background:linear-gradient(135deg,#8b4d67 0%,#b56a85 100%);
+  background:linear-gradient(135deg,#1f5f73 0%,#2f7f95 100%);
   color:#fff;
   border-color:transparent;
-  box-shadow:0 6px 16px rgba(139,77,103,.24);
+  box-shadow:0 6px 16px rgba(31,95,115,.24);
   transform:translateY(-1px);
+}
+.booking-slot.is-disabled,
+.booking-slot.is-disabled:hover{
+  background:#edf4f7;
+  color:#7a8d9c;
+  border-color:#bfd0da;
+  box-shadow:none;
+  transform:none;
+  cursor:not-allowed;
+  opacity:.8;
+}
+.booking-slot.is-disabled .slot-time{
+  text-decoration:line-through;
+  text-decoration-thickness:1.6px;
 }
 /* Loader */
 .booking-loader{
@@ -143,7 +160,7 @@ article.booking-surface{
   align-items:center;
   justify-content:center;
   gap:12px;
-  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(248,237,242,.97));
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(237,244,247,.98));
   transition:opacity .3s ease,visibility .3s ease;
 }
 .booking-shell.is-loaded .booking-loader,
@@ -155,9 +172,9 @@ article.booking-surface{
   width:40px;
   height:40px;
   border-radius:999px;
-  border:2.5px solid rgba(139,77,103,.15);
-  border-top-color:#8b4d67;
-  border-right-color:#e4b8c7;
+  border:2.5px solid rgba(31,95,115,.16);
+  border-top-color:#1f5f73;
+  border-right-color:#88bbca;
   animation:bookingSpin .7s linear infinite;
 }
 @keyframes bookingSpin{to{transform:rotate(360deg)}}
@@ -178,7 +195,7 @@ article.booking-surface{
 
 /* Gallery */
 .gallery-img{object-fit:cover;border-radius:20px;transition:transform .4s cubic-bezier(.2,.8,.3,1),box-shadow .4s ease;}
-.gallery-img:hover{transform:scale(1.03);box-shadow:0 20px 50px rgba(139,77,103,.18);}
+.gallery-img:hover{transform:scale(1.03);box-shadow:0 20px 50px rgba(31,95,115,.2);}
 .gallery-wrap{overflow:hidden;border-radius:20px;}
 
 /* FAQ accordion */
@@ -186,6 +203,35 @@ details summary{cursor:pointer;list-style:none;}
 details summary::-webkit-details-marker{display:none;}
 details[open] .faq-arrow{transform:rotate(180deg);}
 .faq-arrow{transition:transform .25s ease;}
+
+/* General component polish */
+nav.fixed.top-0,
+nav.sticky.top-0{
+  border-bottom:1px solid rgba(122,141,156,.26);
+  box-shadow:0 8px 26px rgba(31,95,115,.08);
+}
+
+#servicios .bg-surface,
+#testimonios .bg-surface,
+#contacto .bg-surface,
+#ubicacion .bg-surface,
+#enfermedades .bg-surface,
+#faq details.bg-surface{
+  border:1px solid #d7e1e8;
+  box-shadow:0 12px 30px rgba(31,95,115,.07);
+}
+
+#servicios .bg-surface:hover,
+#testimonios .bg-surface:hover,
+#contacto .bg-surface:hover,
+#faq details.bg-surface:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 36px rgba(31,95,115,.12);
+}
+
+input:focus,select:focus,textarea:focus{
+  box-shadow:0 0 0 3px rgba(31,95,115,.16);
+}
 </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased pt-20">
@@ -706,7 +752,7 @@ details[open] .faq-arrow{transform:rotate(180deg);}
           <h3 class="font-headline-sm text-headline-sm text-primary">Confirmar cita</h3>
           <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Llena tus datos para completar la reserva.</p>
         </div>
-        <div id="demo-selected-summary" class="rounded-xl px-4 py-3 font-body-sm text-body-sm" style="background:#f8edf2;border:1.5px dashed #e4b8c7;">
+        <div id="demo-selected-summary" class="rounded-xl px-4 py-3 font-body-sm text-body-sm" style="background:#edf4f7;border:1.5px dashed #88bbca;">
         </div>
 
         <form id="demo-booking-form" class="space-y-3" novalidate>
@@ -730,7 +776,7 @@ details[open] .faq-arrow{transform:rotate(180deg);}
               <option value="Salud sexual y reproductiva">Salud sexual y reproductiva</option>
             </select>
           </div>
-          <button id="demo-booking-submit" type="submit" class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl font-body-md text-body-md font-semibold hover:scale-[1.02] active:scale-[.98] transition-transform" style="background:linear-gradient(135deg,#8b4d67 0%,#b56a85 100%);color:#fff;box-shadow:0 6px 20px rgba(139,77,103,.24);">
+          <button id="demo-booking-submit" type="submit" class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl font-body-md text-body-md font-semibold hover:scale-[1.02] active:scale-[.98] transition-transform" style="background:linear-gradient(135deg,#1f5f73 0%,#2f7f95 100%);color:#fff;box-shadow:0 6px 20px rgba(31,95,115,.24);">
             <span class="material-symbols-outlined" style="font-size:18px">event_available</span>
             Reservar cita
           </button>
@@ -806,7 +852,7 @@ details[open] .faq-arrow{transform:rotate(180deg);}
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen></iframe>
-          <div class="absolute left-4 right-4 bottom-4 sm:left-6 sm:right-auto bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-[0_8px_24px_rgba(139,77,103,0.18)] border border-white/80 max-w-md">
+          <div class="absolute left-4 right-4 bottom-4 sm:left-6 sm:right-auto bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-[0_8px_24px_rgba(31,95,115,0.18)] border border-white/80 max-w-md">
             <p class="font-body-md text-body-md font-semibold text-primary">Hospital San Angel Inn Universidad Torre II</p>
             <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Real Mayorazgo 130, Consultorio 342, Piso 3, Torre II, Ciudad de Mexico 03330.</p>
           </div>
