@@ -68,6 +68,8 @@
         dates: []                // array of Date objects (next 7 days)
     };
 
+    var DEFAULT_SLOT_CATALOG = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:30"];
+
     /* ── helpers ── */
     function buildDates() {
         state.dates = [];
@@ -83,6 +85,18 @@
     function slotsFor(dayIndex) {
         var dow = state.dates[dayIndex].getDay();
         return SLOTS[state.tab][dow] || [];
+    }
+
+    function slotCatalogFor(dayIndex) {
+        var dow = state.dates[dayIndex].getDay();
+        var all = [];
+        ["presencial", "video"].forEach(function (tabName) {
+            (SLOTS[tabName][dow] || []).forEach(function (time) {
+                if (all.indexOf(time) === -1) all.push(time);
+            });
+        });
+        if (!all.length) all = DEFAULT_SLOT_CATALOG.slice();
+        return all.sort();
     }
 
     /* ── open / close ── */
@@ -270,28 +284,36 @@
             return;
         }
         var slots = slotsFor(state.selectedDayIndex);
+        var catalog = slotCatalogFor(state.selectedDayIndex);
+
         if (slots.length === 0) {
             container.innerHTML =
                 '<p class="font-body-sm text-body-sm text-on-surface-variant text-center py-4">' +
-                "No hay horarios disponibles este día.</p>";
-            return;
+                "No hay horarios disponibles este día. Te mostramos los horarios bloqueados.</p>";
         }
+
         var grid = document.createElement("div");
         grid.className = "grid grid-cols-3 sm:grid-cols-4 gap-2";
-        slots.forEach(function (time) {
+        catalog.forEach(function (time) {
+            var isAvailable = slots.indexOf(time) !== -1;
             var btn = document.createElement("button");
             btn.type = "button";
+            btn.disabled = !isAvailable;
             btn.className = [
                 "py-2 rounded-lg font-label-caps text-label-caps transition-all",
-                state.selectedTime === time
+                state.selectedTime === time && isAvailable
                     ? "bg-primary text-on-primary shadow"
-                    : "bg-surface border border-outline-variant text-on-surface hover:bg-primary-container hover:text-on-primary-container"
+                    : isAvailable
+                        ? "bg-surface border border-outline-variant text-on-surface hover:bg-primary-container hover:text-on-primary-container"
+                        : "bg-surface-container-low border border-outline-variant text-on-surface-variant line-through opacity-55 cursor-not-allowed"
             ].join(" ");
             btn.textContent = time;
-            btn.addEventListener("click", function () {
-                state.selectedTime = time;
-                renderSlots();
-            });
+            if (isAvailable) {
+                btn.addEventListener("click", function () {
+                    state.selectedTime = time;
+                    renderSlots();
+                });
+            }
             grid.appendChild(btn);
         });
         container.appendChild(grid);

@@ -17,6 +17,8 @@
         localBookings: {}
     };
 
+    var DEFAULT_SLOT_CATALOG = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:30"];
+
     function track(name, payload) {
         if (window.SwapTracking && typeof window.SwapTracking.track === "function") {
             window.SwapTracking.track(name, payload || {});
@@ -274,27 +276,43 @@
             return;
         }
 
-        var slots = state.availability[state.selectedDate] || [];
-        if (slots.length === 0) {
-            container.innerHTML = '<p class="col-span-full font-body-sm text-body-sm text-on-surface-variant">No hay horarios disponibles para este dia.</p>';
-            return;
+        var availableSlots = state.availability[state.selectedDate] || [];
+        var selectedDateObj = fromDateKey(state.selectedDate);
+        var slotCatalog = demoSlotsForDay(selectedDateObj.getDay());
+        if (!slotCatalog.length) slotCatalog = DEFAULT_SLOT_CATALOG.slice();
+
+        if (availableSlots.length === 0) {
+            var notice = document.createElement("p");
+            notice.className = "col-span-full font-body-sm text-body-sm text-on-surface-variant";
+            notice.textContent = "No hay horarios disponibles para este dia. Puedes ver los horarios bloqueados abajo.";
+            container.appendChild(notice);
         }
 
-        slots.forEach(function (slot) {
-            var isActive = slot === state.selectedSlot;
+        slotCatalog.forEach(function (slot) {
+            var isAvailable = availableSlots.indexOf(slot) !== -1;
+            var isActive = isAvailable && slot === state.selectedSlot;
             var button = document.createElement("button");
             button.type = "button";
-            button.className = "booking-slot rounded-lg py-2 font-label-caps text-label-caps " + (isActive ? "is-active" : "");
-            button.innerHTML = '<span class="material-symbols-outlined" style="font-size:13px;line-height:1;opacity:.7">schedule</span>' + slot;
-            button.addEventListener("click", function () {
-                state.selectedSlot = slot;
-                renderSlots();
-                updateSummary();
-                track("booking_demo_slot_selected", {
-                    dateKey: state.selectedDate,
-                    time: slot
+            button.className = "booking-slot rounded-lg py-2 font-label-caps text-label-caps " +
+                (isActive ? "is-active" : "") + " " +
+                (!isAvailable ? "is-disabled" : "");
+            button.disabled = !isAvailable;
+            button.innerHTML =
+                '<span class="material-symbols-outlined" style="font-size:13px;line-height:1;opacity:.7">' +
+                (isAvailable ? "schedule" : "block") +
+                '</span><span class="slot-time">' + slot + "</span>";
+
+            if (isAvailable) {
+                button.addEventListener("click", function () {
+                    state.selectedSlot = slot;
+                    renderSlots();
+                    updateSummary();
+                    track("booking_demo_slot_selected", {
+                        dateKey: state.selectedDate,
+                        time: slot
+                    });
                 });
-            });
+            }
             container.appendChild(button);
         });
     }
